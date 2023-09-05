@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     DashboardModule
   ],
   providers: [],

@@ -1,4 +1,7 @@
 <div class="login-page">
+  <div *ngIf="showAlert">
+    alerta
+  </div>
   <div class="login-page__wrapper">
     <app-card cardType="login">
       <app-title>
@@ -6,7 +9,8 @@
       </app-title>
       <app-input></app-input>
       <app-input></app-input>
-      <app-button></app-button>
+      <app-button (click)="openAlert()"></app-button>
     </app-card>
   </div>
 </div>
+ss

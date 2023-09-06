@@ -5,5 +5,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
+  showAlert: boolean = false;
 
+  openAlert() {
+    this.showAlert = !this.showAlert;
+  }
 }

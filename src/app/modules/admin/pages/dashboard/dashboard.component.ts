@@ -10,6 +10,10 @@ export class DashboardComponent implements OnInit{
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    this.adminService.getAdmin();
+    this.adminService.getAdmin().subscribe(
+      (data) => {
+        console.log(data);
+      }
+    );
   }
 }

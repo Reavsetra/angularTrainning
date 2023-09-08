@@ -4,11 +4,18 @@ import { DashboardComponent } from './modules/admin/pages/dashboard/dashboard.co
 import { DashboardPageComponent } from './modules/dashboard/pages/dashboard-page/dashboard-page.component';
 import { LoginPageComponent } from './modules/dashboard/pages/login-page/login-page.component';
 import { adminGuard, authGuard } from './core/guards/auth.guard';
+import { DevelopersComponent } from './modules/developer/pages/developers/developers.component';
 
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPageComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'devs',
+    component: DevelopersComponent,
+    loadChildren: () => import('./modules/developer/developer.module').then((module) => module.DeveloperModule),
     canActivate: [authGuard],
   },
   {

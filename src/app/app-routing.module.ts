@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './modules/admin/pages/dashboard/dashboard.component';
 import { DashboardPageComponent } from './modules/dashboard/pages/dashboard-page/dashboard-page.component';
 import { LoginPageComponent } from './modules/dashboard/pages/login-page/login-page.component';
-import { HomeComponent } from './modules/welcome/pages/home/home.component';
+import { adminGuard, authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'dashboard',
-    component: DashboardPageComponent
+    component: DashboardPageComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -16,11 +17,20 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: DashboardPageComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'admin',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [authGuard, adminGuard],
+    data: {
+      userType: 'Admin'
+    }
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];
 

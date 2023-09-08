@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { AdminService } from './../../services/admin.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
 
+  constructor(private adminService: AdminService) {}
+
+  ngOnInit(): void {
+    this.adminService.getAdmin();
+  }
 }

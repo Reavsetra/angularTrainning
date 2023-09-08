@@ -5,6 +5,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { DashboardHubComponent } from './components/dashboard-hub/dashboard-hub.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -13,7 +14,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
   imports: [
     CommonModule,
     SharedModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    HttpClientModule
   ]
 })
 export class DashboardModule { }

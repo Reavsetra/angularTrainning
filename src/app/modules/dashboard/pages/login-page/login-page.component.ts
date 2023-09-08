@@ -1,3 +1,4 @@
+import { AuthService } from './../../../../core/services/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
 export class LoginPageComponent {
   showAlert: boolean = false;
 
+  constructor(private authService: AuthService) {}
+
   openAlert() {
-    this.showAlert = !this.showAlert;
+    this.authService.setLogin('Basic');
   }
 }

@@ -1,39 +1,40 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  isLogin = false;
-  roleAs!: string;
+  isLogged: boolean = false;
+  userType: string = '';
 
   constructor() { }
 
-  login(value: string) {
-    this.isLogin = true;
-    this.roleAs = value;
-    localStorage.setItem('STATE', 'true');
-    localStorage.setItem('ROLE', this.roleAs);
-    return of({ success: this.isLogin, role: this.roleAs });
+  setLogin(value: string) {
+    this.isLogged = true;
+    this.userType = value;
+    localStorage.setItem('IS_LOGGED', 'true');
+    localStorage.setItem('USER_TYPE', this.userType);
+    return of({ success: this.isLogged, userType: this.userType });
   }
 
-  logout() {
-    this.isLogin = false;
-    this.roleAs = '';
-    localStorage.setItem('STATE', 'false');
-    localStorage.setItem('ROLE', '');
-    return of({ success: this.isLogin, role: '' });
+  setLogout() {
+    this.isLogged = false;
+    this.userType = '';
+    localStorage.setItem('IS_LOGGED', 'false');
+    localStorage.setItem('USER_TYPE', '');
+    return of({ success: this.isLogged, userType: '' });
   }
 
   isLoggedIn() {
-    const loggedIn = localStorage.getItem('STATE');
-    this.isLogin = loggedIn === 'true';
-    return this.isLogin;
+    const loggedIn = localStorage.getItem('IS_LOGGED');
+    this.isLogged = loggedIn === 'true';
+    return this.isLogged;
   }
 
   getRole() {
-    this.roleAs = localStorage.getItem('ROLE');
-    return this.roleAs;
+    this.userType = localStorage.getItem('USER_TYPE') ?? '';
+    return this.userType;
   }
 }
 

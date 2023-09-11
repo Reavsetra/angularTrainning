@@ -8,7 +8,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 };
 
 export const adminGuard: CanActivateFn = (route, state) => {
-  const adminUserType = route.data['userType'] === 'Admin';
+  const adminUserType = inject(AuthService).getRole() === 'Admin';
 
   return adminUserType;
 };
